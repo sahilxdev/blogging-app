@@ -13,7 +13,7 @@ const app = new Hono<{
 
 
 
-app.post('/api/v1/signup', async (c) => {
+app.post('/api/v1/user/signup', async (c) => {
   const prisma = new PrismaClient({
     datasourceUrl: c.env.DATABASE_URL,
   }).$extends(withAccelerate())
@@ -23,7 +23,8 @@ app.post('/api/v1/signup', async (c) => {
   const user = await prisma.user.create({
     data: {
       email: body.email,
-      password: body.password
+      password: body.password,
+      name: body.name
     }
   })
 
@@ -35,7 +36,7 @@ app.post('/api/v1/signup', async (c) => {
   })
 })
 
-app.post('/api/v1/signin', async (c) => {
+app.post('/api/v1/user/signin', async (c) => {
 	const prisma = new PrismaClient({
 		datasourceUrl: c.env?.DATABASE_URL	,
 	}).$extends(withAccelerate());
@@ -56,19 +57,24 @@ app.post('/api/v1/signin', async (c) => {
 	return c.json({ jwt });
 })
 
-app.get('/api/v1/blog/:id', (c) => {
-	const id = c.req.param('id')
-	console.log(id);
-	return c.text('get blog route')
-})
 
 app.post('/api/v1/blog', (c) => {
-
-	return c.text('signin route')
+  
+  return c.text('signin route')
 })
 
 app.put('/api/v1/blog', (c) => {
-	return c.text('signin route')
+  return c.text('signin route')
+})
+
+app.get('/api/v1/blog/:id', (c) => {
+  const id = c.req.param('id')
+  console.log(id);
+  return c.text('get blog route')
+})
+
+app.get('/api/v1/blog/bulk', (c) => {
+  return c.text("hello")
 })
 
 export default app
