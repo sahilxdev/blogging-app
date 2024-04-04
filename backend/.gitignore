@@ -2,6 +2,7 @@ node_modules
 dist
 wrangler.toml
 notes.md
+.env
 .wrangler
 .dev.vars
 
