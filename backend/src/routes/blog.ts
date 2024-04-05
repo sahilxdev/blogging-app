@@ -31,14 +31,13 @@ blogRouter.use("/*", async (c, next) => {
   } catch (e) {
     c.status(403);
     return c.json({
-        message: "there is error",
+        message: "You are not logged in",
     })
   }
 });
 
 blogRouter.post("/", async (c) => {
   const body = await c.req.json();
-  console.log("sdsdsdsdssdsdsd");
   const { success } = createBlogInput.safeParse(body);
   if (!success) {
     c.status(411);
