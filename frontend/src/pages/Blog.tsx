@@ -1,8 +1,6 @@
-import React from 'react'
 import { useBlog } from '../hooks'
 import FullBlog from '../components/FullBlog';
 import { useParams } from 'react-router-dom';
-import BlogSkeleton from '../components/BlogSkeleton';
 import AppBar from '../components/AppBar';
 import Spinner from '../components/Spinner';
 
@@ -12,7 +10,7 @@ const Blog = () => {
     id: id || ""
   });
 
-  if (loading) {
+  if (loading || !blog) {
     return <div>
       <AppBar/>
       <div className='h-[70vh] flex justify-center items-center'>
