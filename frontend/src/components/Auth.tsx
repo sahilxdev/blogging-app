@@ -1,6 +1,7 @@
 import React, { ChangeEvent, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-// @ts-ignore
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
 import { SignupInput } from "@sahilxdev/medium-common";
 import axios from "axios";
 import { BACKEND_URL } from "../config";

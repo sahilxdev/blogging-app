@@ -18,21 +18,21 @@ blogRouter.use("/*", async (c, next) => {
   //extract user id and pass it down to route handler
   const authHeader = c.req.header("authorization") || "";
   try {
-      const user = await verify(authHeader, c.env.JWT_SECRET);
-      if (user) {
-        c.set("userId", user.id);
-        await next();
-      } else {
-        c.status(403);
-        return c.json({
-          message: "You are not logged in",
-        });
-      }
+    const user = await verify(authHeader, c.env.JWT_SECRET);
+    if (user) {
+      c.set("userId", user.id);
+      await next();
+    } else {
+      c.status(403);
+      return c.json({
+        message: "You are not logged in",
+      });
+    }
   } catch (e) {
     c.status(403);
     return c.json({
-        message: "You are not logged in"
-    })
+      message: "You are not logged in",
+    });
   }
 });
 
@@ -42,9 +42,9 @@ blogRouter.post("/", async (c) => {
   if (!success) {
     c.status(411);
     return c.json({
-        message: "Inputs not correct"
-    })
-  } 
+      message: "Inputs not correct",
+    });
+  }
 
   const authorId = c.get("userId");
   const prisma = new PrismaClient({
@@ -70,9 +70,9 @@ blogRouter.put("/", async (c) => {
   if (!success) {
     c.status(411);
     return c.json({
-        message: "Inputs not correct"
-    })
-  }   
+      message: "Inputs not correct",
+    });
+  }
 
   const prisma = new PrismaClient({
     datasourceUrl: c.env.DATABASE_URL,
@@ -99,10 +99,21 @@ blogRouter.get("/bulk", async (c) => {
     datasourceUrl: c.env.DATABASE_URL,
   }).$extends(withAccelerate());
 
-  const blogs = await prisma.blog.findMany();
+  const blogs = await prisma.blog.findMany({
+    select: {
+      content: true,
+      title: true,
+      id: true,
+      author: {
+        select: {
+          name: true
+        }
+      }
+    }
+  });
 
   return c.json({
-    blogs
+    blogs,
   });
 });
 
@@ -117,6 +128,16 @@ blogRouter.get("/:id", async (c) => {
       where: {
         id: Number(id),
       },
+      select: {
+        id: true,
+        title: true,
+        content: true,
+        author: {
+          select: {
+            name: true
+          }
+        }
+      }
     });
 
     return c.json({
@@ -129,4 +150,3 @@ blogRouter.get("/:id", async (c) => {
     });
   }
 });
-
