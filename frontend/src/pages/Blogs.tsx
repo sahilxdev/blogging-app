@@ -2,13 +2,21 @@ import React from "react";
 import BlogCard from "../components/BlogCard";
 import AppBar from "../components/AppBar";
 import { useBlogs } from "../hooks";
+import BlogSkeleton from "../components/BlogSkeleton";
 
 const Blogs = () => {
     const {loading, blogs} = useBlogs();
 
     if (loading) {
         return <div>
-            loading...
+            <AppBar />
+            <div className="flex flex-col items-center max-w-[90vw]">
+            <BlogSkeleton/>
+            <BlogSkeleton/>
+            <BlogSkeleton/>
+
+
+        </div>
         </div>
     }
 
