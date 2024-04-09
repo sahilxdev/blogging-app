@@ -12,9 +12,9 @@ const AppBar = () => {
         </Link>
         <div className='flex'>
             <Link to={'/publish'}>
-            <button className='pr-6 mt-1'> <PencilIcon/></button>
+            <button className='pr-6 '> <PencilIcon/></button>
             </Link>
-            <Avatar name={"S"} size={10} tsize={20} />
+            <Avatar name={"S"} size={8} tsize={20} />
         </div>
     </div>
   )
