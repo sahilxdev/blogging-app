@@ -20,7 +20,7 @@ const BlogCard = ({
       <div className="p-4 pb-4 border-slate-200 border-b-2 min-w-[20vw] max-w-[60vw] cursor-pointer">
         <div className="flex my-2 items-center">
           <div className="flex items-center ml-2 ">
-            <Avatar name={authorName} size={4} tsize={6} />
+            <Avatar name={authorName} size={6} tsize={6} />
           </div>
           <div className="pl-2 font-light text-sm">
             {authorName}
