@@ -21,7 +21,7 @@ const FullBlog = ({ blog }: { blog: Blog }) => {
             </div>
             <div className="flex w-full ">
                 <div className="h-10 pr-2 flex items-center">
-                    <Avatar size={10} tsize={20} name={blog.author.name || "Anonymous"} />
+                    <Avatar size={8} tsize={20} name={blog.author.name || "Anonymous"} />
                 </div>
               <div>
                 <div className="text-xl font-bold">
