@@ -31,21 +31,6 @@ const Blogs = () => {
             publishedDate={"2nd Feb 2024"}
           />
         )}
-        <BlogCard
-                  authorName={"Peter V."}
-                  title={"How an ugly single website makes $5000 a Month without Affiliate Marketing"}
-                  content={"How an ugly single website makes $5000 a Month without Affiliate Marketing How an ugly single website makes $5000 a Month without Affiliate Marketing "}
-                  publishedDate={"2nd Feb 2024"} id={0}        />
-        <BlogCard
-                  authorName={"Peter V."}
-                  title={"How an ugly single website makes $5000 a Month without Affiliate Marketing"}
-                  content={"How an ugly single website makes $5000 a Month without Affiliate Marketing How an ugly single website makes $5000 a Month without Affiliate Marketing "}
-                  publishedDate={"2nd Feb 2024"} id={0}        />
-        <BlogCard
-                  authorName={"Peter V."}
-                  title={"How an ugly single website makes $5000 a Month without Affiliate Marketing"}
-                  content={"How an ugly single website makes $5000 a Month without Affiliate Marketing How an ugly single website makes $5000 a Month without Affiliate Marketing "}
-                  publishedDate={"2nd Feb 2024"} id={0}        />
       </div>
     </div>
   );
